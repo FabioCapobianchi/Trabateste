@@ -2,7 +2,6 @@
 #include "comuns.h"
 #include <signal.h>
 
- 
 int main(){
 
 int s_fifo_fd;
@@ -44,13 +43,9 @@ if(s_fifo_fd == -1){
  exit(EXIT_FAILURE);
  }
  
- 
  fprintf(stderr, "\nFIFO do cliente aberto para READ(+Write) Block");
  
  memset(cli1.comando, '\0', TAM_MAX);
- 
- 
-
  
  while(1){
 
@@ -60,9 +55,8 @@ if(!strcasecmp(cli1.comando,"fim")){
 write(s_fifo_fd, &cli1, sizeof(cli1));
 break;
 }
-// B) Envia a pergunta
+// b) Envia a pergunta
 write(s_fifo_fd, &cli1, sizeof(cli1));
-
 
 // c) Obtem a resposta
 

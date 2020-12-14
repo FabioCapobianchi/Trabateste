@@ -2,7 +2,6 @@ all:
 	gcc -g -Wall -o servidor servidor.c comuns.c
 	gcc -g -Wall -o clififo clififo.c
 	
-
 servidor:
 	gcc -c servidor.c
 clififo:

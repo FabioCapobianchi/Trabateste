@@ -1,8 +1,6 @@
 
 #include "comuns.h"
 
-
-
 void initRandom()
 {
     srand(time(NULL));
@@ -12,7 +10,6 @@ int randomNum(int a, int b)
 {
     return a + rand()%(b-a+1);
 }
-
 
 pcli criaCliente(pcli c1, client copia)
 {

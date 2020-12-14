@@ -4,7 +4,6 @@
 #include <signal.h>
 #include <time.h>
 
-
 int  fsinal;
 int pontos=0;
 
@@ -13,19 +12,15 @@ void recebeSinal(int sin){
 printf("\nSinal recebido.\n ");
 printf("\nPontuacao final: %d pontos.\n",pontos);
 fsinal=1;
-
 }
 
-void initRandom()
-{
+void initRandom(){
   srand(time(NULL));
 }
 
-int randomNum(int a,int b)
-{
+int randomNum(int a,int b){
   return a + rand()%(b-a+1);
 }
-
 
 int main(int argc, char * argv[]){
 
@@ -45,13 +40,13 @@ while(1){
   if(res == 0){
    printf("\nPontuacao final: %d pontos.\n",pontos);
   break;  
- }
+    }
   if(res == n){
   printf("\nAcertou!!!\n");
   pontos+=1;
 }else{
   printf("\n--Errou--\n");
+    }
 }
- }
  return 0;
-  }
+}
