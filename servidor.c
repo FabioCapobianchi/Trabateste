@@ -16,7 +16,7 @@ fprintf(stderr,"\nServidor de dicionario a terminar"
 int main(int argc, char * argv[]){
 initRandom();
 
-int num, nfd ,ver,res,x=0,y=0;
+int num, ndd,ver,res,x=0,y=0;
 char c_fifo_fname[50];
 char *gamedir, *maxplayer;
 
@@ -83,7 +83,12 @@ s_fifo_fd = open(SERVER_FIFO, O_RDWR);
         FD_ZERO(& read_fds);
         FD_SET(0,  & read_fds);
         FD_SET(s_fifo_fd, & read_fds);
-        nfd = select(2, & read_fds, NULL, NULL, NULL);/////parei aqui
+        ndd = select(2, & read_fds, NULL, NULL, NULL);/////parei aqui
+        
+        if(ndd == -1){
+        
+        printf("ola");
+        }
  
         if(FD_ISSET(0, & read_fds)){
             char buff[25];
@@ -134,10 +139,11 @@ c_fifo_fd = open(c_fifo_fname, O_WRONLY);
 res = write(c_fifo_fd, & resp, sizeof(resp));
     if(res == sizeof(resp))
         fprintf(stderr,"\nescreveu a resposta");
-    else
+    else{
         perror("\nerro a escrever a resposta");
         close(c_fifo_fd);
         fprintf(stderr,"\nFIFO cliente fechado"); 
+    }
     }
  close(s_fifo_fd);
  unlink(SERVER_FIFO);
