@@ -6,23 +6,25 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <time.h>
+#include <sys/time.h>
 #include <sys/select.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <ctype.h>
+#include <signal.h>
 
 
-#define  SERVER_FIFO "ser_fifo"
+#define  CHAMP_FIFO "ser_fifo"
 
 #define  CLIENT_FIFO "f%s"
 
 #define TAM_MAX 50
 
-#define  NOMECL "%s"
+
 
 typedef struct cliente client, *pcli;
 
-struct cliente{//cliente -> servidor
+struct cliente{//CHAMP -> servidor
  pid_t pid_cliente;
  char pnome[TAM_MAX];
  char fname[TAM_MAX];
@@ -31,7 +33,7 @@ struct cliente{//cliente -> servidor
 };
 
 
-typedef struct{//servidor -> cliente
+typedef struct{//CHAMP -> cliente
  char comando[TAM_MAX];
  char ngame[TAM_MAX];
  int points;
@@ -40,6 +42,10 @@ typedef struct{//servidor -> cliente
 pcli criaCliente(pcli c1, client copia);
 
 int Verifica_player(pcli c1, char cname[]);
+
+void mostra_player(pcli c1);
+
+void mostra_jogos(int tam,char *fga[4][1]);
 
 int max(int a, int b);
 

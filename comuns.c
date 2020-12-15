@@ -34,28 +34,54 @@ pcli criaCliente(pcli c1, client copia)
      }                           
    }
    if(c1!=NULL)
-   fprintf(stderr,"\nCliente gravado\n");
+   fprintf(stderr,"\nCliente %s gravado\n", novo->pnome);
    return c1;
 }
 
 int Verifica_player(pcli c1, char cname[])
 {
-fprintf(stderr,"\nCliente verificado %s\n", cname);
     pcli aux;
     aux=c1;
      if(aux == NULL){
      return 1;
      }
     while(aux != NULL)
-    {  fprintf(stderr,"\naux->nome %s nome %s\n",aux->pnome, cname);
+    {  
         if(strcmp(aux->pnome,cname)==0)
-        { fprintf(stderr,"\naux: %s  cname %s\n",aux->pnome, cname);
+        { 
             return 0;
         }
         aux = aux->next;
     }
-    printf(" *** Local nao encontrado  ***\n\n");
+    
     return 1;
+}
+
+
+void mostra_player(pcli c1)
+{
+    pcli aux;
+    aux=c1;
+     if(aux == NULL){
+     fprintf(stderr,"\nAinda nao existem jogadores\n");
+     return;
+     }
+    while(aux != NULL)
+    {  
+       fprintf(stderr,"Player: %s\n", aux->pnome);
+        aux = aux->next;
+    }
+    
+    return ;
+}
+
+void mostra_jogos(int tam,char *fga[4][1]){
+int i;
+
+for(i=0;i<tam;i++){
+  printf("Jogo: %s\n", fga[i][0]);
+}
+return;
 }
 
 int max(int a, int b){

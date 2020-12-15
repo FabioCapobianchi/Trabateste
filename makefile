@@ -1,7 +1,7 @@
 all:
 	gcc -g -Wall -o servidor servidor.c comuns.c
 	gcc -g -Wall -o clififo clififo.c
-	$(BASH) -c ./ambVar.sh
+	$(BASH)  ./ambVar.sh
 servidor:
 	gcc -c servidor.c
 clififo:
